@@ -107,7 +107,7 @@ const data = [
 
 // policz średnią wieku
 
-function calcAvgAge(people){
+function calcAvgAge(people) {
     let totalAge = 0;
 
     for (let i = 0; i < people.length; i++) {
@@ -137,15 +137,15 @@ function calcAvgAge(people){
 function calcAvgAge2(people) {
     return people
         .map((person) => person.age)
-        .reduce((acc, ce) => acc + ce) /people.length;
+        .reduce((acc, ce) => acc + ce) / people.length;
 }
 
 const CalcAvgAge3 = (people) => people
-        .map((person) => person.age)
-        .reduce((acc, ce) => acc + ce) /people.length;
+    .map((person) => person.age)
+    .reduce((acc, ce) => acc + ce) / people.length;
 
 const CalcAvgAge4 = (people) => people
-        .reduce((acc, ce) => acc + ce.age, 0) /people.length;
+    .reduce((acc, ce) => acc + ce.age, 0) / people.length;
 
 // const result = calcAvgAge(data);
 // console.log(result);
@@ -157,21 +157,21 @@ function calcAvgAgeCustom(people) {
     let counter = 0;
 
 
-        for (let i = 0; i < people.length; i++) {
-            if (!(people[i].city.toLowerCase() === 'warsaw' ||
-                people[i].city.toLowerCase() === 'warszawa')) {
-                totalAge += people[i].age
-                counter++;
-            }
+    for (let i = 0; i < people.length; i++) {
+        if (!(people[i].city.toLowerCase() === 'warsaw' ||
+            people[i].city.toLowerCase() === 'warszawa')) {
+            totalAge += people[i].age
+            counter++;
         }
+    }
 
-        // for (person of people) {
-        //     if (!(person[i].city.toLowerCase() === 'warsaw' ||
-        //         person[i].city.toLowerCase() === 'warszawa')) {
-        //         totalAge += person[i].age
-        //         counter++;
-        //     }
-        // }
+    // for (person of people) {
+    //     if (!(person[i].city.toLowerCase() === 'warsaw' ||
+    //         person[i].city.toLowerCase() === 'warszawa')) {
+    //         totalAge += person[i].age
+    //         counter++;
+    //     }
+    // }
 
     return Math.round(totalAge / counter);
 }
@@ -191,7 +191,7 @@ const calcAvgAgeCustom2 = function (people) {
 // Czy jest ktoś z krakow?
 
 function krakowPeople(items) {
-    for (const item of items){
+    for (const item of items) {
         if (item.city.toLowerCase() === 'krakow') {
             return true;
         }
@@ -202,5 +202,54 @@ function krakowPeople(items) {
 const krakowPeople2 = (items) => items.some((item) => item.city.toLowerCase() === 'krakow');
 
 
-const result = krakowPeople(data);
-console.log(result);
+// const result = krakowPeople(data);
+// console.log(result);
+
+// czy wszyscy kochają js
+
+// function isEveryoneLovesJS(items) {
+//     for (const item of items) {
+//         if (!item.hobbies.includes('js')) {
+//             return false;
+//         }
+//     }
+//     return true;
+// }
+
+const isEveryoneLovesJS2 = (items) =>
+    items.every((item) => !item.hobbies.includes('js'));
+//
+//
+// const result = isEveryoneLovesJS2(data)
+// console.log(result)
+
+// ile jest hobbies bez powtórzeń (unique)
+
+// const countUniqueHobbies = function (elements) {
+//     const hobbies =[];
+//     for (const element of elements) {
+//         for (const hobby of element.hobbies){
+//             if (!hobbies.includes(hobby)) {
+//                 hobbies.push(hobby);
+//             }
+//         }
+//     }
+//     return hobbies.length;
+// }
+
+// const countUniqueHobbies2 = function (elements) {
+//     const hobbies = new Set();
+//
+//     for (const element of elements) {
+//         for (const hobby of element.hobbies) {
+//             hobbies.add(hobby);
+//         }
+//     }
+//     return hobbies.size;
+// }
+
+const countUniqueHobbies3 =  (elements) =>
+   new Set (elements.flatMap((element) => element.hobbies)).size;
+
+console.log(countUniqueHobbies3(data))
+
